@@ -263,7 +263,7 @@ export class ReportesPage implements OnInit {
         row.push(acu);
 
         row.push(data.noAnimal.toString() + ' / ' + data.noAnimal2.toString());
-        row.push(data.observacion.toString() + ' / ' + data.observacion.toString());
+        row.push(data.observacion.toString() + ' / ' + data.observacion2.toString());
         body3.push(row);
         h3.push(27);
       }
