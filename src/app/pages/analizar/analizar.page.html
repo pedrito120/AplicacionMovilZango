@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar  color="negroZango" class="bordeV tb">
+    <ion-buttons slot="start" defaultHref="/tabs/tab1">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title size="small">Ver Empresas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="negroZango">
+  <div class="empresas" *ngFor="let d of datos" (click)="empresa(d.id)">
+    <ion-button color="verdeZango">
+      <div class="text">
+        {{d.nombre}}
+      </div>
+      <ion-icon name="arrow-forward" slot="end"></ion-icon>
+    </ion-button>
+  </div>
+</ion-content>

@@ -1,0 +1,52 @@
+<style>
+  :root {
+    --ion-safe-area-top: 20px;
+    --ion-safe-area-bottom: 22px;
+  }
+
+  ion-header>ion-toolbar>ion-title {
+    background-color: #121212;
+    border: solid 1px #00bb64;
+    padding: 5%;
+    color: honeydew;
+  } 
+</style>
+<ion-header>
+  <ion-toolbar>
+    <ion-title size="small" style="text-align: center;">Grupo Zango</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="negroZango">
+  <ion-slides pager="true">
+    <ion-slide *ngFor="let slide of slides">
+      <div class="slide-img-padding">
+        <img [src]="slide.img">
+      </div>
+      <div>
+        <h3 [innerHTML]="slide.titulo"></h3>
+      </div>
+    </ion-slide>
+  </ion-slides>
+  <ion-footer no-border>
+    <ion-grid no-border>
+      <ion-row no-border>
+        <ion-col size="10" offset="1" no-border>
+          <ion-button (click)="registrarEmpresa()" color="verdeZango" expand="full" shape="round" node="ios"
+            class="btn-verde">
+            Registrar empresa
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="10" offset="1">
+          <ion-button (click)="analizarEmpresa()" expand="full" fill="clear">
+            <ion-label style="color: #00bb64;">
+              Ver empresa
+            </ion-label>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-footer>
+</ion-content>

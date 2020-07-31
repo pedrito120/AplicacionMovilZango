@@ -1,0 +1,944 @@
+<ion-header>
+  <ion-toolbar color="negroZango" class="bordeV tb">
+    <ion-buttons slot="start" defaultHref="/">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title size="small">Portada de servicio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="negroZango" class="tb">
+
+  <form #f="ngForm">
+    <ion-card color="negroZango">
+
+      <ion-card style="text-align: center;" color="negroZango" class="bordeV">
+        <ion-row>
+          <ion-col size="12">
+            Numero del reporte
+            <ion-input type='number' name="noReporte" [(ngModel)]="portada.noReporte" class="bordeV2"></ion-input>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+
+      <ion-card class="ct" color="negroZango">
+        <ion-row>
+          <ion-col>
+            Hora
+          </ion-col>
+          <ion-col>
+            Fecha
+          </ion-col>
+        </ion-row>
+      </ion-card>
+
+      <ion-row>
+        <ion-col>
+
+          <ion-row class="ct">
+            <ion-col>
+              Inicio
+              <ion-datetime display-format="h:mm A" picker-format="h:mm A" value="1990-02-19T07:43Z" [(ngModel)]="portada.inicio"
+                name="inicio"></ion-datetime>
+            </ion-col>
+            <ion-col>
+              Termino
+              <ion-datetime display-format="h:mm A" picker-format="h:mm A" value="1990-02-19T07:43Z" [(ngModel)]="portada.termino"
+                name="termino"></ion-datetime>
+            </ion-col>
+          </ion-row>
+
+        </ion-col>
+
+        <ion-col class="ct">
+
+          <ion-row>
+            <ion-col>
+              <ion-input type="date" name="fecha" [(ngModel)]="portada.fecha" class="bordeV"></ion-input>
+            </ion-col>
+          </ion-row>
+
+        </ion-col>
+
+
+
+
+      </ion-row>
+
+      <ion-card color="negroZango">
+        <ion-row>
+          <ion-col class="ct bordeV">
+            <ion-card color="verdeZango">
+              Servicio Realizado
+            </ion-card>
+
+            <ion-row>
+              <ion-col size="3">
+                <ion-checkbox [(ngModel)]="portada.check[0]" name="check[0]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col>
+                <ion-label>Supervisión y abasto de trampas c/v</ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="3">
+                <ion-checkbox [(ngModel)]="portada.check[1]" name="check[1]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col>
+                <ion-label>Supervisión y abasto de lamparas UV</ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="3">
+                <ion-checkbox [(ngModel)]="portada.check[2]" name="check[2]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col>
+                <ion-label>Supervisión y abasto de estaciones cebaderas</ion-label>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+          <ion-col class="ct bordeV">
+            <ion-card color="verdeZango">
+              Areas Tratadas
+            </ion-card>
+            <ion-row>
+              <ion-col size="3">
+                <ion-checkbox [(ngModel)]="portada.check[3]" name="check[3]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col>
+                <ion-label>Servicio en interiores</ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="3">
+                <ion-checkbox [(ngModel)]="portada.check[4]" name="check[4]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col>
+                <ion-label>Servicio en exteriores</ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="3">
+                <ion-checkbox [(ngModel)]="portada.check[5]" name="check[6]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col>
+                <ion-label>Servicio en interiores y exteriores</ion-label>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+
+
+        <ion-row>
+          <ion-col class="ct bordeV">
+            <ion-row>
+              <ion-col size="3">
+                <ion-checkbox [(ngModel)]="portada.check[6]" name="check[6]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col>
+                <ion-label>Termo-Nebulización integral</ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="3">
+                <ion-checkbox [(ngModel)]="portada.check[7]" name="check[7]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col>
+                <ion-label>Nebulización de perimetros</ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="3">
+                <ion-checkbox [(ngModel)]="portada.check[8]" name="check[8]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col>
+                <ion-label>Aspersión de focalizada</ion-label>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+          <ion-col class="ct bordeV">
+            <ion-row>
+              <ion-col size="3">
+                <ion-checkbox [(ngModel)]="portada.check[9]" name="check[9]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col>
+                <ion-label>Servicio en interiores y oficinas</ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="3">
+                <ion-checkbox [(ngModel)]="portada.check[10]" name="check[10]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col>
+                <ion-label>Servicio en exteriores</ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="3">
+                <ion-checkbox [(ngModel)]="portada.check[11]" name="check[11]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col>
+                <ion-label>Servicio en interiores, oficinas y exteriores</ion-label>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+
+
+        <ion-row>
+          <ion-col class="ct bordeV">
+            <ion-row>
+              <ion-col size="3">
+                <ion-checkbox [(ngModel)]="portada.check[12]" name="check[12]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col>
+                <ion-label>Sanitización</ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="3">
+                <ion-checkbox [(ngModel)]="portada.check[13]" name="check[13]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col>
+                <ion-label>Aplicación de repelente de aves</ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="3">
+                <ion-checkbox [(ngModel)]="portada.check[14]" name="check[14]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col>
+                <ion-label>Aplicación de repelente de reptiles</ion-label>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+          <ion-col class="ct bordeV">
+            <ion-row>
+              <ion-col size="3">
+                <ion-checkbox [(ngModel)]="portada.check[15]" name="check[15]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col>
+                <ion-label>Servicio en interiores</ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="3">
+                <ion-checkbox [(ngModel)]="portada.check[16]" name="check[16]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col>
+                <ion-label>Servicio en exteriores</ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="3">
+                <ion-checkbox [(ngModel)]="portada.check[17]" name="check[17]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col>
+                <ion-label>Servicio en interiores y exteriores</ion-label>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+
+
+      <ion-card color="negroZango">
+        <ion-row class="ct">
+          <ion-col>Producto utilizado</ion-col>
+          <ion-col>Sustancia activa</ion-col>
+          <ion-col>Caducidad del frasco</ion-col>
+          <ion-col>Equipo de aplicación</ion-col>
+        </ion-row>
+        <ion-row class="bordeV">
+          <ion-col>
+            <ion-row class="bordeV">
+              <ion-col class="ct t2" size="6">
+                <div>
+                  <ion-checkbox [(ngModel)]="portada.check[18]" name="check[18]" color="success"></ion-checkbox>
+                </div>
+                <div>
+                  <ion-label>Biothrine CE</ion-label>
+                </div>
+                <div>
+                  <ion-checkbox [(ngModel)]="portada.check[19]" name="check[19]" color="success"></ion-checkbox>
+                </div>
+                <div>
+                  <ion-label>Demon 40PH</ion-label>
+                </div>
+                <div>
+                  <ion-checkbox [(ngModel)]="portada.check[20]" name="check[20]" color="success"></ion-checkbox>
+                </div>
+                <div>
+                  <ion-label>Demand</ion-label>
+                </div>
+                <div>
+                  <ion-checkbox [(ngModel)]="portada.check[21]" name="check[21]" color="success"></ion-checkbox>
+                </div>
+                <div>
+                  <ion-label>Biflex plus</ion-label>
+                </div>
+                <div>
+                  <ion-checkbox [(ngModel)]="portada.check[22]" name="check[22]" color="success"></ion-checkbox>
+                </div>
+                <div>
+                  <ion-label>Tyson 4E</ion-label>
+                </div>
+              </ion-col>
+
+              <ion-col size="6" class="ct">
+                <div>
+                  <ion-checkbox [(ngModel)]="portada.check[23]" name="check[23]" color="success"></ion-checkbox>
+                </div>
+                <div>
+                  <ion-label>Termidor</ion-label>
+                </div>
+                <div>
+                  <ion-checkbox [(ngModel)]="portada.check[24]" name="check[24]" color="success"></ion-checkbox>
+                </div>
+                <div>
+                  <ion-label>Pirenat</ion-label>
+                </div>
+                <div>
+                  <ion-checkbox [(ngModel)]="portada.check[25]" name="check[25]" color="success"></ion-checkbox>
+                </div>
+                <div>
+                  <ion-label>Cybor</ion-label>
+                </div>
+                <div>
+                  <ion-checkbox [(ngModel)]="portada.check[26]" name="check[26]" color="success"></ion-checkbox>
+                </div>
+                <div>
+                  <ion-label>Fumitrol</ion-label>
+                </div>
+                <div>
+                  <ion-checkbox [(ngModel)]="portada.check[27]" name="check[27]" color="success"></ion-checkbox>
+                </div>
+                <div>
+                  <ion-label>Biothrine FLOW</ion-label>
+                </div>
+              </ion-col>
+
+            </ion-row>
+          </ion-col>
+
+          <ion-col>
+            <ion-row class="bordeV ct">
+              <ion-col class="t1">
+                <ion-input name="sustanciaActiva" [(ngModel)]="portada.sustanciaActiva" class="i1 bordeV2"></ion-input>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+          <ion-col>
+            <ion-row class="bordeV ct">
+              <ion-col class="t1">
+                <ion-input type="date" name="caducidadFrasco" [(ngModel)]="portada.caducidadFrasco" class="i1 bordeV2"></ion-input>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+
+          <ion-col>
+            <ion-row class="bordeV">
+              <ion-col>
+
+                <ion-row>
+                  <ion-col size="2">
+                    <ion-checkbox [(ngModel)]="portada.check[28]" name="check[28]" color="success"></ion-checkbox>
+                  </ion-col>
+                  <ion-col size="10">
+                    Nebulizador Electrico
+                  </ion-col>
+                </ion-row>
+
+                <ion-row>
+                  <ion-col size="2">
+                    <ion-checkbox [(ngModel)]="portada.check[29]" name="check[30]" color="success"></ion-checkbox>
+                  </ion-col>
+                  <ion-col size="10">
+                    Nebulizador Motorizado
+                  </ion-col>
+                </ion-row>
+
+                <ion-row>
+                  <ion-col size="2">
+                    <ion-checkbox [(ngModel)]="portada.check[30]" name="check[30]" color="success"></ion-checkbox>
+                  </ion-col>
+                  <ion-col size="10">
+                    Termo-Nebulizador de Gas
+                  </ion-col>
+                </ion-row>
+
+                <ion-row>
+                  <ion-col size="2">
+                    <ion-checkbox [(ngModel)]="portada.check[31]" name="check[31]" color="success"></ion-checkbox>
+                  </ion-col>
+                  <ion-col size="10">
+                    Termo-Nebulizador Motorizado
+                  </ion-col>
+                </ion-row>
+
+                <ion-row>
+                  <ion-col size="2">
+                    <ion-checkbox [(ngModel)]="portada.check[32]" name="check[32]" color="success"></ion-checkbox>
+                  </ion-col>
+                  <ion-col size="10">
+                    Aspersora Electrica
+                  </ion-col>
+                </ion-row>
+              </ion-col>
+
+              <ion-row>
+                <ion-col size="2">
+                  <ion-checkbox [(ngModel)]="portada.check[33]" name="check[33]" color="success"></ion-checkbox>
+                </ion-col>
+                <ion-col size="10">
+                  Aspersora de Presión
+                </ion-col>
+              </ion-row>
+
+
+            </ion-row>
+          </ion-col>
+
+        </ion-row>
+      </ion-card>
+
+      <ion-card color="negroZango" class="ct">
+        <ion-row>
+          <ion-col>
+            Areas a tratar
+          </ion-col>
+          <ion-col>
+            Productos utilizados
+          </ion-col>
+          <ion-col>
+            Ingredientes
+          </ion-col>
+          <ion-col>
+            Dosis
+          </ion-col>
+          <ion-col>
+            Cantidad
+          </ion-col>
+        </ion-row>
+        <ion-row class="bordeV">
+
+          <ion-col class="bordeV">
+            <ion-row>
+              <ion-col size="2">
+                <ion-checkbox [(ngModel)]="portada.check[34]" name="check[34]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col size="10">
+                Interiores
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+          <ion-col class="bordeV">
+            Laminas Rastreros
+          </ion-col>
+
+          <ion-col class="bordeV">
+            Polisobuteno
+          </ion-col>
+
+          <ion-col class="bordeV">
+            Adhesivo
+          </ion-col>
+
+          <ion-col class="bordeV">
+            <ion-input name="cantidad1" [(ngModel)]="portada.cantidad[0]" class="bordeV2"></ion-input>
+          </ion-col>
+
+        </ion-row>
+
+        <br>
+        <ion-row class="bordeV">
+
+          <ion-col class="bordeV">
+            <ion-row>
+              <ion-col size="2">
+                <ion-checkbox [(ngModel)]="portada.check[35]" name="check[35]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col size="10">
+                Interiores
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+          <ion-col class="bordeV">
+            Laminas Voladores
+          </ion-col>
+
+          <ion-col class="bordeV">
+            Polisobuteno
+          </ion-col>
+
+          <ion-col class="bordeV">
+            Adhesivo
+          </ion-col>
+
+          <ion-col class="bordeV">
+            <ion-input name="cantidad2" [(ngModel)]="portada.cantidad[1]" class="bordeV2"></ion-input>
+          </ion-col>
+
+        </ion-row>
+        <br>
+        <ion-row class="bordeV">
+
+          <ion-col class="bordeV">
+            <ion-row>
+              <ion-col size="2">
+                <ion-checkbox [(ngModel)]="portada.check[36]" name="check[36]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col size="10">
+                Interiores
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+          <ion-col class="bordeV">
+            <ion-row>
+              <ion-col size="2">
+                <ion-checkbox [(ngModel)]="portada.check[37]" name="check[37]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col size="10">
+                Termo-Nebulización integral
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="2">
+                <ion-checkbox [(ngModel)]="portada.check[38]" name="check[38]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col size="10">
+                Nebulización de Perimetros
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+          <ion-col class="bordeV">
+            <ion-input name="ingrediente1" [(ngModel)]="portada.ingrediente[0]" class="bordeV2"></ion-input>
+          </ion-col>
+
+          <ion-col class="bordeV">
+            <ion-row>
+              <ion-col size="2">
+                <ion-checkbox [(ngModel)]="portada.check[39]" name="check[39]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col size="10">
+                10-20% x Lt.H2O
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="2">
+                <ion-checkbox [(ngModel)]="portada.check[40]" name="check[40]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col size="10">
+                10-20% x Lt.H2O
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+          <ion-col class="bordeV">
+            <ion-input name="cantidad3" [(ngModel)]="portada.cantidad[2]" class="bordeV2"></ion-input>
+          </ion-col>
+
+        </ion-row>
+
+        <br>
+
+        <ion-row class="bordeV">
+
+          <ion-col class="bordeV">
+            <ion-row>
+              <ion-col size="2">
+                <ion-checkbox [(ngModel)]="portada.check[41]" name="check[41]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col size="10">
+                Interiores
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+          <ion-col class="bordeV">
+            <ion-row>
+              <ion-col size="2">
+                <ion-checkbox [(ngModel)]="portada.check[42]" name="check[42]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col size="10">
+                Aplicacion de repelente de aves
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="2">
+                <ion-checkbox [(ngModel)]="portada.check[43]" name="check[43]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col size="10">
+                Aplicacion de repelente de reptiles
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+          <ion-col class="bordeV">
+            <ion-input name="ingrediente2" [(ngModel)]="portada.ingrediente[1]" class="bordeV2"></ion-input>
+          </ion-col>
+
+          <ion-col class="bordeV">
+            <ion-row>
+              <ion-col size="2">
+                <ion-checkbox [(ngModel)]="portada.check[44]" name="check[44]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col size="10">
+                10-20% x Lt.H2O
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="2">
+                <ion-checkbox [(ngModel)]="portada.check[45]" name="check[45]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col size="10">
+                10-20% x Lt.H2O
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+          <ion-col class="bordeV">
+            <ion-input name="cantidad4" [(ngModel)]="portada.cantidad[3]" class="bordeV2"></ion-input>
+          </ion-col>
+
+        </ion-row>
+        <br>
+
+        <ion-row class="bordeV">
+
+          <ion-col class="bordeV">
+            <ion-row>
+              <ion-col size="2">
+                <ion-checkbox [(ngModel)]="portada.check[46]" name="check[46]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col size="10">
+                Interiores
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+          <ion-col class="bordeV">
+            <ion-row>
+              <ion-col size="2">
+                <ion-checkbox [(ngModel)]="portada.check[47]" name="check[47]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col size="10">
+                Aspersión focalizada
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="2">
+                <ion-checkbox [(ngModel)]="portada.check[48]" name="check[48]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col size="10">
+                Sanitización
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+          <ion-col class="bordeV">
+            <ion-input name="ingrediente3" [(ngModel)]="portada.ingrediente[2]" class="bordeV2"></ion-input>
+            <ion-row>
+              <ion-col size="2">
+                <ion-checkbox [(ngModel)]="portada.check[49]" name="check[49]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col size="10">
+                Ambietrol "NOVARTIS"
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+          <ion-col class="bordeV">
+            <ion-row>
+              <ion-col size="2">
+                <ion-checkbox [(ngModel)]="portada.check[50]" name="check[50]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col size="10">
+                10-20% x Lt.H2O
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="2">
+                <ion-checkbox [(ngModel)]="portada.check[51]" name="check[51]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col size="10">
+                10-20% x Lt.H2O
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+          <ion-col class="bordeV">
+            <ion-input name="cantidad5" [(ngModel)]="portada.cantidad[4]" class="bordeV2"></ion-input>
+          </ion-col>
+
+        </ion-row>
+        <br>
+
+        <ion-row class="bordeV">
+
+          <ion-col class="bordeV">
+            <ion-row>
+              <ion-col size="2">
+                <ion-checkbox [(ngModel)]="portada.check[52]" name="check[52]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col size="10">
+                Exteriores
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+          <ion-col class="bordeV">
+            <ion-row>
+              <ion-col size="2">
+                <ion-checkbox [(ngModel)]="portada.check[53]" name="check[53]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col size="10">
+                Aspersión focalizada
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="2">
+                <ion-checkbox [(ngModel)]="portada.check[54]" name="check[54]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col size="10">
+                Supervisión y abasto de cebaderos
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+          <ion-col class="bordeV">
+            <ion-input name="ingrediente4" [(ngModel)]="portada.ingrediente[3]" class="bordeV2"></ion-input>
+          </ion-col>
+
+          <ion-col class="bordeV">
+            <ion-row>
+              <ion-col size="2">
+                <ion-checkbox [(ngModel)]="portada.check[55]" name="check[55]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col size="10">
+                10-20% x Lt.H2O
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="2">
+                <ion-checkbox [(ngModel)]="portada.check[56]" name="check[56]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col size="10">
+                0.05 SUST. ACT.
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+          <ion-col class="bordeV">
+            <ion-input name="cantidad6" [(ngModel)]="portada.cantidad[5]" class="bordeV2"></ion-input>
+          </ion-col>
+
+        </ion-row>
+        <br>
+
+        <ion-row class="bordeV">
+
+          <ion-col class="bordeV">
+            <ion-row>
+              <ion-col size="2">
+                <ion-checkbox [(ngModel)]="portada.check[57]" name="check[57]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col size="10">
+                Exsteriores
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+          <ion-col class="bordeV">
+            <ion-row>
+              <ion-col size="2">
+                <ion-checkbox [(ngModel)]="portada.check[58]" name="check[58]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col size="10">
+                Termo-Nebulización integral
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="2">
+                <ion-checkbox [(ngModel)]="portada.check[59]" name="check[59]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col size="10">
+                Nebulización de perímetros
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+          <ion-col class="bordeV">
+            <ion-input name="ingrediente5" [(ngModel)]="portada.ingrediente[4]" class="bordeV2"></ion-input>
+          </ion-col>
+
+          <ion-col class="bordeV">
+            <ion-row>
+              <ion-col size="2">
+                <ion-checkbox [(ngModel)]="portada.check[60]" name="check[60]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col size="10">
+                10-20% x Lt.H2O
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="2">
+                <ion-checkbox [(ngModel)]="portada.check[61]" name="check[61]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col size="10">
+                10-20% x Lt.H2O
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+          <ion-col class="bordeV">
+            <ion-input name="cantidad7" [(ngModel)]="portada.cantidad[6]" class="bordeV2"></ion-input>
+          </ion-col>
+
+        </ion-row>
+        <br>
+
+        <ion-row class="bordeV">
+
+          <ion-col class="bordeV">
+            <ion-row>
+              <ion-col size="2">
+                <ion-checkbox [(ngModel)]="portada.check[62]" name="check[62]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col size="10">
+                Exteriores
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+          <ion-col class="bordeV">
+            <ion-row>
+              <ion-col size="2">
+                <ion-checkbox [(ngModel)]="portada.check[63]" name="check[63]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col size="10">
+                Aplicación de repelente de aves
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="2">
+                <ion-checkbox [(ngModel)]="portada.check[64]" name="check[64]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col size="10">
+                Aplicación de repelente de reptiles
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+          <ion-col class="bordeV">
+            <ion-row>
+              <ion-col>
+                <ion-checkbox [(ngModel)]="portada.check[65]" name="check[65]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col>
+                Bird Repellent
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-checkbox [(ngModel)]="portada.check[66]" name="check[66]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col>
+                Red Cedar Punch
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+          <ion-col class="bordeV">
+            <ion-row>
+              <ion-col size="2">
+                <ion-checkbox [(ngModel)]="portada.check[67]" name="check[67]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col size="10">
+                10-20% x Lt.H2O
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="2">
+                <ion-checkbox [(ngModel)]="portada.check[68]" name="check[68]" color="success"></ion-checkbox>
+              </ion-col>
+              <ion-col size="10">
+                10-20% x Lt.H2O
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+          <ion-col class="bordeV">
+            <ion-input name="cantidad8" [(ngModel)]="portada.cantidad[7]" class="bordeV2"></ion-input>
+          </ion-col>
+
+        </ion-row>
+
+      </ion-card>
+
+      <ion-card color="negroZango" class="ct">
+        <ion-col size="12">
+          ACTIVIDADES REALIZADAS:
+        </ion-col>
+        <ion-col size="12">
+          <ion-input name="actividadesRealizadas" [(ngModel)]="portada.actividadeRealizadas" class="bordeV2"></ion-input>
+        </ion-col>
+      </ion-card>
+
+      <ion-card color="negroZango" class="ct">
+        <ion-col size="12">
+          RECOMENDACIÓN AL CLIENTE:
+        </ion-col>
+        <ion-col size="12">
+          <ion-input name="recomendacion" [(ngModel)]="portada.recomendacion" class="bordeV2"></ion-input>
+        </ion-col>
+      </ion-card>
+
+
+    </ion-card>
+
+    <ion-card class="tb ct" color="negroZango">
+      <ion-row>
+        <ion-col size="6">
+          <ion-col>
+            RESPONSABLE DE ÁREA
+          </ion-col>
+          <ion-col>
+            <ion-input [(ngModel)]="portada.responsable" name="responsable" class="bordeV2"></ion-input>
+          </ion-col>
+        </ion-col>
+        <ion-col size="6">
+          <ion-col>
+            TÉCNICO APLICADOR
+          </ion-col>
+          <ion-col>
+            <ion-input [(ngModel)]="portada.tecnico" name="tecnico" class="bordeV2"></ion-input>
+          </ion-col>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+
+    <ion-row>
+      <ion-col size="2">
+
+      </ion-col>
+      <ion-col size="8">
+        <ion-button (click)="ver()" color="verdeZango" class="ct">
+          Generar Portada
+        </ion-button>
+      </ion-col>
+      <ion-col size="2">
+
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

@@ -1,0 +1,157 @@
+<ion-header>
+  <ion-toolbar color="negroZango" class="bordeV tb">
+    <ion-buttons slot="start" defaultHref="/">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title size="small">Trampas Exteriores</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="negroZango" class="tb margen">
+  <ion-card color="negroZango" class="ct">
+    <ion-card style="text-align: center;" color="negroZango">
+      <ion-row>
+        <ion-col>
+          <ion-row>
+            <ion-col size="3">#</ion-col>
+            <ion-col size="9">Observacion</ion-col>
+          </ion-row>
+        </ion-col>
+        <ion-col style="padding-top: 3%;">Actividad</ion-col>
+      </ion-row>
+    </ion-card>
+    <form #f="ngForm">
+      <div *ngFor="let in of exterior">
+        <div *ngIf="in.observacion.length > 0 ">
+          <ion-label>Trampa {{in.trampa+1}}</ion-label>
+          <ion-card class="bordeV ct" color="negroZango">
+            <ion-row>
+              <ion-col>
+                <ion-row>
+                  <ion-col class="bordeV" size="4">
+                    <ion-input ngModel type="number" name="noAnimal" readonly>{{in.noAnimal}}</ion-input>
+                  </ion-col>
+                  <ion-col class="bordeV" size="8">
+                    <ion-input ngModel name="observacion" readonly>{{in.observacion}}</ion-input>
+                  </ion-col>
+                </ion-row>
+              </ion-col>
+              <ion-col class="">
+                <ion-row>
+                  <ion-col>
+                    <div>
+                      <ion-label>CC</ion-label>
+                      <ion-checkbox color="success" checked="{{in.actividad.cc}}" slot="end" name="cc" disabled>
+                      </ion-checkbox>
+                    </div>
+                    <div>
+                      <ion-label>EE</ion-label>
+                      <ion-checkbox color="success" disabled checked="{{in.actividad.ee}}" slot="end" name="ee">
+                      </ion-checkbox>
+                    </div>
+                  </ion-col>
+                  <ion-col>
+                    <div>
+                      <ion-label>SC</ion-label>
+                      <ion-checkbox color="success" disabled checked="{{in.actividad.sc}}" slot="end" name="sc">
+                      </ion-checkbox>
+                    </div>
+                    <div>
+                      <ion-label>ER</ion-label>
+                      <ion-checkbox color="success" disabled checked="{{in.actividad.er}}" slot="end" name="er">
+                      </ion-checkbox>
+                    </div>
+                  </ion-col>
+                  <ion-col>
+                    <div>
+                      <ion-label>ED</ion-label>
+                      <ion-checkbox color="success" disabled checked="{{in.actividad.ed}}" slot="end" name="ed">
+                      </ion-checkbox>
+                    </div>
+                    <div>
+                      <ion-label>EB</ion-label>
+                      <ion-checkbox color="success" disabled checked="{{in.actividad.eb}}" slot="end" name="eb">
+                      </ion-checkbox>
+                    </div>
+                  </ion-col>
+                </ion-row>
+              </ion-col>
+            </ion-row>
+          </ion-card>
+        </div>
+        <div *ngIf="in.observacion.length === 0 ">
+          <ion-label>Trampa {{in.trampa+1}}</ion-label>
+          <ion-card class="bordeV ct" color="negroZango">
+            <ion-row>
+              <ion-col>
+                <ion-row>
+                  <ion-col class="bordeV" size="4">
+                    <ion-input ngModel type="number" name="noAnimal"></ion-input>
+                  </ion-col>
+                  <ion-col class="bordeV" size="8">
+                    <ion-input ngModel name="observacion"></ion-input>
+                  </ion-col>
+                </ion-row>
+              </ion-col>
+              <ion-col>
+                <ion-row>
+                  <ion-col>
+                    <div>
+                      <ion-label>CC</ion-label>
+                      <ion-checkbox color="success" (ionChange)="check($event,'cc')" slot="end" name="cc">
+                      </ion-checkbox>
+                    </div>
+                    <div>
+                      <ion-label>EE</ion-label>
+                      <ion-checkbox color="success" (ionChange)="check($event,'ee')" name="ee"></ion-checkbox>
+                    </div>
+                  </ion-col>
+                  <ion-col>
+                    <div>
+                      <ion-label>SC</ion-label>
+                      <ion-checkbox (ionChange)="check($event,'sc')" color="success" slot="end" name="sc">
+                      </ion-checkbox>
+                    </div>
+                    <div>
+                      <ion-label>ER</ion-label>
+                      <ion-checkbox (ionChange)="check($event,'er')" color="success" slot="end" name="er">
+                      </ion-checkbox>
+                    </div>
+                  </ion-col>
+                  <ion-col>
+                    <div>
+                      <ion-label>ED</ion-label>
+                      <ion-checkbox (ionChange)="check($event,'ed')" color="success" slot="end" name="ed">
+                      </ion-checkbox>
+                    </div>
+                    <div>
+                      <ion-label>EB</ion-label>
+                      <ion-checkbox (ionChange)="check($event,'eb')" color="success" slot="end" name="eb">
+                      </ion-checkbox>
+                    </div>
+                  </ion-col>
+                </ion-row>
+              </ion-col>
+            </ion-row>
+          </ion-card>
+          <ion-button color="verdeZango" expand="block" (click)="guardarTrampa(f,in.trampa)">Guardar</ion-button>
+        </div>
+      </div>
+    </form>
+  </ion-card>
+</ion-content>
+
+<ion-footer *ngIf="datos === 0">
+  <form #subir="ngForm">
+    <ion-row style="text-align: center;">
+      <ion-col size="6">
+        <ion-input type="number" ngModel name="reporte" placeholder="Numero de reporte"></ion-input>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button expand="full" color="verdeZango" (click)="subirCambios(subir)">
+          Guardar Datos
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-footer>

@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="negroZango" class="bordeV tb">
+    <ion-buttons slot="start" defaultHref="/">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title size="small">Reportes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="negroZango" class="ct">
+  <br>
+  <br>
+  <div class="empresas" *ngFor="let d of reportes">
+    <ion-row>
+      <ion-col zise="6">
+        <ion-button (click)="serviceVerificar(d.id)" color="verdeZango"  >
+          <ion-icon name="reader-outline" slot="start"></ion-icon>
+          <div class="text">
+            REPORTE {{d.id}}
+          </div>
+          <ion-icon name="arrow-forward" slot="end"></ion-icon>
+        </ion-button>
+      </ion-col>
+      
+    </ion-row>
+    <br>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-button *ngIf="pdfObj" color="verdeZango" expand="full">Ver Reporte {{numeroDeReporte}}</ion-button>
+</ion-footer>

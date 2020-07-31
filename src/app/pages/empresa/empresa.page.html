@@ -1,0 +1,64 @@
+
+<ion-header>
+  <ion-toolbar color="negroZango" class="bordeV tb" >
+    <ion-buttons slot="start" defaultHref="/">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title size="small" ></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="negroZango">
+  <ion-footer no-border class="centrar">
+    <ion-grid no-border>
+
+      <ion-row no-border>
+        <ion-col size="10" offset="1" no-border>
+
+          <ion-button (click)="irInterior()" color="verdeZango" expand="full" node="ios"
+            class="btn-verde">
+            Registrar Consumos de <br> trampas interiores
+          </ion-button>
+
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="separarButtons">
+        <ion-col size="10" offset="1">
+
+          <ion-button (click)="irExteriores()" expand="full" fill="clear">
+            <ion-label style="color: #00bb64;">
+              Registrar Consumos de <br> exteriores
+            </ion-label>
+          </ion-button>
+
+        </ion-col>
+      </ion-row>
+
+      <ion-row no-border class="separarButtons">
+        <ion-col size="10" offset="1" no-border>
+
+          <ion-button (click)="irLamparas()" color="verdeZango" expand="full" node="ios"
+            class="btn-verde">
+            Registrar Consumos de <br> lamparas
+          </ion-button>
+
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="separarButtons">
+        <ion-col size="10" offset="1">
+
+          <ion-button (click)="irPortada()" expand="full" fill="clear">
+            <ion-label style="color: #00bb64;">
+              Registrar portada <br> de servicio
+            </ion-label>
+          </ion-button>
+
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+  </ion-footer>
+</ion-content>
