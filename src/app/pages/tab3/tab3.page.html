@@ -5,15 +5,15 @@
 </ion-header>
 
 <ion-content color="negroZango" class="ct">
-
-  <div class="empresas" *ngFor="let d of datos">
-    <ion-button (click)="irReportes(d.id)" color="verdeZango">
-      <ion-icon name="reader-outline" slot="start"></ion-icon>
-      <div class="text">
+<ion-card color="negroZango">
+  <div class="alto" *ngFor="let d of datos">
+    <ion-button expand="block" (click)="irReportes(d.id)" color="verdeZango">
+      <div  class="text">
         {{d.nombre}}
       </div>
-      <ion-icon name="arrow-forward" slot="end"></ion-icon>
     </ion-button>
   </div>
+</ion-card>
+  
   
 </ion-content>
