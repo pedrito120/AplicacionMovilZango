@@ -1,27 +1,37 @@
-
-
 <ion-header color="negroZango">
   <ion-toolbar color="negroZango" class="bordeVZ">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title size="small" >Registrar Empresa</ion-title>
+    <ion-title size="small" class="texto">Registrar Empresa</ion-title>
   </ion-toolbar>
 </ion-header>
 
 
 <ion-content color="negroZango">
-  <ion-card-content>
-    <form name="form" #f="ngForm">
-      <ion-item color="">
+  <ion-card-content >
+    <form name="form" #f="ngForm" >
+      <ion-item color="negroZango">
         <ion-label position="stacked"></ion-label>
 
-        <ion-row>
+        <ion-row >
           <ion-col size="1">
             <ion-icon color="verdeZango" name="lock-open-outline" class="centrarIcon"></ion-icon>
           </ion-col>
-          <ion-col size="10" offset="1">
-            <ion-input placeholder="ID de la empresa" [(ngModel)]="empresa.id" name="id"></ion-input>
+          <ion-col size="10" offset="1" style="color:#FFFFFF">
+            <ion-input placeholder="ID de la empresa" [(ngModel)]="empresa.id" name="id" #id="ngModel" required
+              minlength="2" pattern="[0-9]*"></ion-input>
+          </ion-col>
+          <ion-col *ngIf="id.invalid || (id.dirty && id.touched)" class="ion-text-center">
+            <ion-badge *ngIf="id.hasError('required')" color="danger">
+              Requiere ID
+            </ion-badge>
+            <ion-badge *ngIf="id.hasError('minlength')" color="danger">
+              Requiere dos o más números
+            </ion-badge>
+            <ion-badge *ngIf="id.hasError!('pattern')" color="danger">
+              Solo números
+            </ion-badge>
           </ion-col>
         </ion-row>
 
@@ -29,8 +39,17 @@
           <ion-col size="1">
             <ion-icon color="verdeZango" name="business-outline" class="centrarIcon"></ion-icon>
           </ion-col>
-          <ion-col size="10" offset="1">
-            <ion-input placeholder="Nombre de la empresa" [(ngModel)]="empresa.nombre" name="nombre"></ion-input>
+          <ion-col size="10" offset="1" style="color:#FFFFFF">
+            <ion-input placeholder="Nombre de la empresa" [(ngModel)]="empresa.nombre" name="nombre" #nombre="ngModel"
+              required minlength="3" pattern="[A-Za-z0-9]*"></ion-input>
+          </ion-col>
+          <ion-col *ngIf="nombre.invalid || (nombre.dirty && nombre.touched)" class="ion-text-center">
+            <ion-badge *ngIf="nombre.hasError('required')" color="danger">
+              Campo requerido
+            </ion-badge>
+            <ion-badge *ngIf="nombre.hasError('minlength')" color="danger">
+              Requiere más de 3 caracteres
+            </ion-badge>
           </ion-col>
         </ion-row>
 
@@ -38,8 +57,9 @@
           <ion-col size="1">
             <ion-icon color="verdeZango" name="cube-outline" class="centrarIcon"></ion-icon>
           </ion-col>
-          <ion-col size="10" offset="1">
-            <ion-input type="number" placeholder="No. de trampas interiores" [(ngModel)]="empresa.noInterior" name="noInterior"></ion-input>
+          <ion-col size="10" offset="1" style="color:#FFFFFF">
+            <ion-input type="number" placeholder="No. de trampas interiores" [(ngModel)]="empresa.noInterior"
+              name="noInterior"></ion-input>
           </ion-col>
         </ion-row>
 
@@ -47,51 +67,87 @@
           <ion-col size="1">
             <ion-icon color="verdeZango" name="cube-outline" class="centrarIcon"></ion-icon>
           </ion-col>
-          <ion-col size="10" offset="1">
-            <ion-input type="number" placeholder="No. de trampas exteriores" [(ngModel)]="empresa.noExterior" name="noExterior"></ion-input>
+          <ion-col size="10" offset="1" style="color:#FFFFFF">
+            <ion-input type="number" placeholder="No. de trampas exteriores" [(ngModel)]="empresa.noExterior"
+              name="noExterior"></ion-input>
           </ion-col>
         </ion-row>
-        
+
         <ion-row>
           <ion-col size="1">
             <ion-icon color="verdeZango" name="sunny-outline" class="centrarIcon"></ion-icon>
           </ion-col>
-          <ion-col size="10" offset="1">
-            <ion-input type="number" placeholder="No. de lámparas" [(ngModel)]="empresa.noLamparas" name="noLamparas"></ion-input>
+          <ion-col size="10" offset="1" style="color:#FFFFFF">
+            <ion-input type="number" placeholder="No. de lámparas" [(ngModel)]="empresa.noLamparas" name="noLamparas">
+            </ion-input>
           </ion-col>
         </ion-row>
-        
+
         <ion-row>
           <ion-col size="1">
             <ion-icon color="verdeZango" name="person-outline" class="centrarIcon"></ion-icon>
           </ion-col>
-          <ion-col size="10" offset="1">
-            <ion-input placeholder="Contacto" [(ngModel)]="empresa.contacto" name="contacto"></ion-input>
+          <ion-col size="10" offset="1" style="color:#FFFFFF">
+            <ion-input placeholder="Contacto" [(ngModel)]="empresa.contacto" name="contacto" #contacto="ngModel"
+              required minlength="8" pattern="[a-zA-Z\s\u00E0-\u00FC]*"></ion-input>
+          </ion-col>
+          <ion-col *ngIf="contacto.invalid || (contacto.dirty && contacto.touched)" class="ion-text-center">
+            <ion-badge *ngIf="contacto.hasError('required')" color="danger">
+              Campo requerido
+            </ion-badge>
+            <ion-badge *ngIf="contacto.hasError('minlength')" color="danger">
+              Requiere 8 o más letras
+            </ion-badge>
+            <ion-badge *ngIf="contacto.hasError!('pattern')" color="danger">
+              Solo letras
+            </ion-badge>
           </ion-col>
         </ion-row>
-        
+
         <ion-row>
           <ion-col size="1">
             <ion-icon color="verdeZango" name="call-outline" class="centrarIcon"></ion-icon>
           </ion-col>
-          <ion-col size="10" offset="1">
-            <ion-input placeholder="Telefono" [(ngModel)]="empresa.telefono" name="telefono"></ion-input>
+          <ion-col size="10" offset="1" style="color:#FFFFFF">
+            <ion-input placeholder="Teléfono" [(ngModel)]="empresa.telefono" name="telefono" #telefono="ngModel" required
+            minlength="7" pattern="[0-9]*"></ion-input>
+          </ion-col>
+          <ion-col *ngIf="telefono.invalid || (telefono.dirty && telefono.touched)" class="ion-text-center">
+            <ion-badge *ngIf="telefono.hasError('required')" color="danger">
+              Campo requerido
+            </ion-badge>
+            <ion-badge *ngIf="telefono.hasError('minlength')" color="danger">
+              Requiere 7 o más números
+            </ion-badge>
+            <ion-badge *ngIf="telefono.hasError!('pattern')" color="danger">
+              Solo números
+            </ion-badge>
           </ion-col>
         </ion-row>
-        
+
         <ion-row>
           <ion-col size="1">
             <ion-icon color="verdeZango" name="location-outline" class="centrarIcon"></ion-icon>
           </ion-col>
-          <ion-col size="10" offset="1">
-            <ion-input placeholder="Dirección" [(ngModel)]="empresa.direccion" name="direccion"></ion-input>
+          <ion-col size="10" offset="1" style="color:#FFFFFF">
+            <ion-input placeholder="Dirección" [(ngModel)]="empresa.direccion" name="direccion" #direccion="ngModel"
+            required minlength="20"></ion-input>
+          </ion-col>
+          <ion-col *ngIf="direccion.invalid || (direccion.dirty && direccion.touched)" class="ion-text-center">
+            <ion-badge *ngIf="direccion.hasError('required')" color="danger">
+              Campo requerido
+            </ion-badge>
+            <ion-badge *ngIf="direccion.hasError('minlength')" color="danger">
+              Requiere 20 o más caracteres
+            </ion-badge>
           </ion-col>
         </ion-row>
-        
+
       </ion-item>
       <ion-row no-border>
         <ion-col size="10" offset="1" no-border style="margin-top: 6%;">
-          <ion-button color="verdeZango" expand="full" shape="round" node="ios" (click)="registrar()">
+          <ion-button color="verdeZango" expand="full" shape="round" node="ios" (click)="registrar()"
+            [disabled]="!f.valid">
             Registrar
           </ion-button>
         </ion-col>

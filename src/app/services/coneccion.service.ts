@@ -69,5 +69,8 @@ export class ConeccionService {
   obtenerDatosEmpres(idEmpresa){
     return this.grupoZango.object(`grupoZangoApp/empresa/${idEmpresa}`).valueChanges();
   }
+  obtenerDatosEmpresa(idEmpresa){
+    return this.grupoZango.object(`grupoZangoApp/empresa/${idEmpresa}`).valueChanges();
+  }
   
 }

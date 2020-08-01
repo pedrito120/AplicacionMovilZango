@@ -9,7 +9,7 @@ import { ConeccionService } from 'src/app/services/coneccion.service';
 })
 export class EmpresaPage implements OnInit {
   datos: any;
-  nombre: any;
+  nombre="";
   id: any;
   constructor(private router: Router, private empresaService: ConeccionService, private route: ActivatedRoute) {
     this.empresaService.obtenerEmpresas().subscribe((res) => {
@@ -18,6 +18,11 @@ export class EmpresaPage implements OnInit {
       console.log(this.datos);
     });
     this.id = this.route.snapshot.paramMap.get('id');
+    this.empresaService.obtenerDatosEmpresa(this.id).subscribe((res)=>{
+      this.datos=res;
+      this.nombre=this.datos.nombre;
+      console.log(this.datos)
+    })
   }
 
   irExteriores() {

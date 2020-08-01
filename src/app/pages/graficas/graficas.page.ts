@@ -21,6 +21,8 @@ export class GraficasPage implements OnInit {
   @ViewChild('barChart2', { static: true }) barChart2;
   bars: any;
   bars2: any;
+  dato: any;
+  nombre="";
   constructor(private router: Router, private empresaService: ConeccionService, private route: ActivatedRoute) {
     this.id = this.route.snapshot.paramMap.get('id');
 
@@ -28,6 +30,11 @@ export class GraficasPage implements OnInit {
       console.log(res);
       this.fechas(res);
     });
+    this.empresaService.obtenerDatosEmpresa(this.id).subscribe((res)=>{
+      this.dato=res;
+      this.nombre=this.dato.nombre;
+      console.log(this.dato)
+    })
   }
   fechas(data: any) {
     let acu = '0000-00-00';
