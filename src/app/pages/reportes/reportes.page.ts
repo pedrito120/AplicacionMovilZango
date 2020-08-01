@@ -6,6 +6,9 @@ import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
+import { File } from '@ionic-native/file/ngx';
+import { FileOpener } from '@ionic-native/file-opener/ngx';
+import { Platform } from '@ionic/angular';
 @Component({
   selector: 'app-reportes',
   templateUrl: './reportes.page.html',
@@ -20,7 +23,8 @@ export class ReportesPage implements OnInit {
   reportes: any;
   numeroDeReporte: any;
   valorVerificar: any;
-  constructor(private router: Router, private empresaService: ConeccionService, private route: ActivatedRoute) {
+  constructor(private router: Router, private empresaService: ConeccionService, private route: ActivatedRoute,
+              private file: File, private fileOpener: FileOpener, private platform: Platform) {
 
   }
 
@@ -641,7 +645,7 @@ export class ReportesPage implements OnInit {
             widths: ['*', 'auto'],
             body: [
               ['SITUACION QUE GUARDAN LAS ESTACIONES AL MOMENTO DE LA REVISIÓN EN: ', { text: this.datosEmpresa.nombre.toUpperCase() }],
-              ['DIRECCION: '+this.datosEmpresa.direccion.toUpperCase(), { text: 'TEL: ' + this.datosEmpresa.telefono.toUpperCase() }],
+              ['DIRECCION: ' + this.datosEmpresa.direccion.toUpperCase(), { text: 'TEL: ' + this.datosEmpresa.telefono.toUpperCase() }],
               [{ text: 'AÑO: ' + new Date().getFullYear(), alignment: 'left' },
               { text: 'FECHA: ' + datosPortada.fecha, alignment: 'left' }]
             ]
@@ -760,8 +764,17 @@ export class ReportesPage implements OnInit {
     };
 
     this.pdfObj = pdfMake.createPdf(dd);
-
-    this.pdfObj.download();
   }
 
+  openFile() {
+    if (this.platform.is('cordova')) {
+      this.pdfObj.getBuffer((buffer) => {
+        const blob = new Blob([buffer], { type: 'application/pdf' });
+        this.file.writeFile(this.file.dataDirectory, 'reporte.pdf', blob, { replace: true }).then(fileEntry => {
+          this.fileOpener.open(this.file.dataDirectory + 'reporte.pdf', 'application/pdf');
+        });
+      });
+      return true;
+    }
+  }
 }

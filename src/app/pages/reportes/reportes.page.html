@@ -27,5 +27,5 @@
   </div>
 </ion-content>
 <ion-footer>
-  <ion-button *ngIf="pdfObj" color="verdeZango" expand="full">Ver Reporte {{numeroDeReporte}}</ion-button>
+  <ion-button *ngIf="pdfObj" color="verdeZango" expand="full" (click)="openFile()">Ver Reporte {{numeroDeReporte}}</ion-button>
 </ion-footer>
