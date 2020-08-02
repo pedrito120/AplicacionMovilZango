@@ -24,7 +24,7 @@ export class ReportesPage implements OnInit {
   numeroDeReporte: any;
   valorVerificar: any;
   constructor(private router: Router, private empresaService: ConeccionService, private route: ActivatedRoute,
-              private file: File, private fileOpener: FileOpener, private platform: Platform) {
+    private file: File, private fileOpener: FileOpener, private platform: Platform) {
 
   }
 
@@ -76,10 +76,10 @@ export class ReportesPage implements OnInit {
   cargarDatos(id) {
     this.numeroDeReporte = id;
     this.empresaService.prueba(this.id, id).subscribe((res: any) => {
-      this.pruebas(res.interior, res.exterior, res.lamparas, res.portada);
+      this.crearReporte(res.interior, res.exterior, res.lamparas, res.portada);
     });
   }
-  pruebas(data1, data2, data3, data4) {
+  async crearReporte(data1, data2, data3, data4) {
     let datosInteriores: any;
     let datosExteriores: any;
     let datosLamparas: any;
@@ -238,7 +238,7 @@ export class ReportesPage implements OnInit {
         h2.push(27);
       }
     }
-    for (var key in datosLamparas) {
+    for (let key in datosLamparas) {
       if (datosLamparas.hasOwnProperty(key)) {
         var data = datosLamparas[key];
         var row = new Array();
@@ -280,39 +280,40 @@ export class ReportesPage implements OnInit {
         element.push('[X]');
       }
     }
-    var dd = {
-      pageMargins: [20, 40, 20, 40],
-
+    const dd = {
+      pageMargins: [15, 80, 15, 30],
+      footer: (currentPage, pageCount) => {
+        return {
+          text: 'Page ' + currentPage.toString() + ' of ' +
+            pageCount, alignment: 'center', style: 'normalText'
+        }
+      },
+      header: {
+        margin: [20, 0, 20, 0],
+        image: await this.getBase64ImageFromURL(
+          'https://i.ibb.co/4VXDZ3w/logo.png'
+        ),
+        width: 220,
+        height: 80
+      },
       content: [
-        // {
-        //   image: 'assets/img/logo'
-        // },
         {
-          text: ''
-        },
-        {
-          columns:
-            [
-              {
+          style: 'tableExample',
+          table: {
+            widths: ['auto', '*', 'auto'],
+            body: [
+              [{
                 table: {
-                  body: [
-                    ['Hora de Inicio', 'Hora  de Salida'],
-                    [{ text: datosPortada.inicio, style: 'letraDoc' }, { text: datosPortada.termino, style: 'letraDoc' }]
-                  ],
-
+                  body: [['Hora de Inicio', 'Hora  de Salida'],
+                  [{ text: datosPortada.inicio, style: 'letraDoc' }, { text: datosPortada.termino, style: 'letraDoc' }]]
                 }
+              },
+              { text: 'REPORTE DE SERVICIO', alignment: 'center', bold: true, fontSize: 18 },
+              { table: { body: [[{ text: ['FECHA\n', datosPortada.fecha] }]] } }]
+            ]
 
-              },
-              {
-                text: 'REPORTE DE SERVICIO', alignment: 'center', bold: true, fontSize: 14
-              },
-              {
-                text: datosPortada.fecha, alignment: 'right'
+          }, layout: 'noBorders'
 
-              },
-            ],
-          margin: 11,
-          alignment: 'center'
         },
         {
           style: 'tableExample',
@@ -345,7 +346,7 @@ export class ReportesPage implements OnInit {
               [{
                 style: 'small',
                 text: [
-                  element[0] + 'supervicion y abasto de trampas\n',
+                  element[0] + 'Supervicion y abasto de trampas\n',
                   element[1] + 'Supervisión y abasto de lamparas UV.\n',
                   element[2] + 'Supervisión y abasto de estaciones cebaderas.'
                 ],
@@ -355,34 +356,34 @@ export class ReportesPage implements OnInit {
               {
                 style: 'small',
                 text: [
-                  element[3] + 'Servicio en interiores y oficinas.\n',
+                  element[3] + 'Servicio en interiores \n',
                   element[4] + 'Servicio en exteriores.\n',
-                  element[5] + 'Servicio en interiores, oficinas y exteriores'
+                  element[5] + 'Servicio en interiores y exteriores'
                 ]
               }],
               [{
                 style: 'small',
                 text: [
-                  element[6] + 'supervicion y abasto de trampas\n',
-                  element[7] + 'Supervisión y abasto de lamparas UV.\n',
-                  element[8] + 'Supervisión y abasto de estaciones cebaderas.'
+                  element[6] + 'Termo-Nebulización integral.\n',
+                  element[7] + 'Nebulización de perímetros.\n',
+                  element[8] + 'Aspersión de focalizada.'
                 ]
 
               },
               {
                 style: 'small',
                 text: [
-                  element[9] + 'Servicio en interiores.\n',
+                  element[9] + 'Servicio en interiores y oficinas.\n',
                   element[10] + 'Servicio en exteriores.\n',
-                  element[11] + 'Servicio en interiores y exteriores'
+                  element[11] + 'Servicio en interiores, oficinas y exteriores'
                 ]
               }],
               [{
                 style: 'small',
                 text: [
-                  element[12] + 'supervicion y abasto de trampas\n',
-                  element[13] + 'Supervisión y abasto de lamparas UV.\n',
-                  element[14] + 'Supervisión y abasto de estaciones cebaderas.'
+                  element[12] + 'Sanitización.\n',
+                  element[13] + 'Aplicación de repelente de aves\n',
+                  element[14] + 'Aplicación de repelente de reptiles.'
                 ]
 
               },
@@ -454,7 +455,7 @@ export class ReportesPage implements OnInit {
           style: 'tableExample',
           table: {
             style: 'small',
-            widths: ['auto', '*', 'auto', '*', 'auto'],
+            widths: ['auto', '*', 'auto', 'auto', 'auto'],
             body: [
               [{ style: 'letraDoc', text: 'AREAS A TRATAR' }, { style: 'letraDoc', text: 'PRODUCTOS UTILIZADOS' },
               { style: 'letraDoc', text: 'INGREDIENTES A.' }, { style: 'letraDoc', text: 'DOSIS' },
@@ -644,10 +645,12 @@ export class ReportesPage implements OnInit {
             style: 'tableExample',
             widths: ['*', 'auto'],
             body: [
-              ['SITUACION QUE GUARDAN LAS ESTACIONES AL MOMENTO DE LA REVISIÓN EN: ', { text: this.datosEmpresa.nombre.toUpperCase() }],
-              ['DIRECCION: ' + this.datosEmpresa.direccion.toUpperCase(), { text: 'TEL: ' + this.datosEmpresa.telefono.toUpperCase() }],
-              [{ text: 'AÑO: ' + new Date().getFullYear(), alignment: 'left' },
-              { text: 'FECHA: ' + datosPortada.fecha, alignment: 'left' }]
+              [{ text: 'SITUACION QUE GUARDAN LAS ESTACIONES AL MOMENTO DE LA REVISIÓN EN: ', fontSize: 11, bold: true },
+              { text: this.datosEmpresa.nombre.toUpperCase(), bold: true }],
+              [{ text: 'DIRECCION: ' + this.datosEmpresa.direccion.toUpperCase(), bold: true },
+              { text: 'TEL: ' + this.datosEmpresa.telefono.toUpperCase(), bold: true }],
+              [{ text: 'AÑO: ' + datosPortada.fecha.substring(0, 4), alignment: 'left', bold: true },
+              { text: 'FECHA: ' + datosPortada.fecha, alignment: 'left', bold: true }]
             ]
           }
 
@@ -758,12 +761,13 @@ export class ReportesPage implements OnInit {
           alignment: 'justify'
         },
         tableExample: {
-          margin: [0, 5, 0, 15]
+          margin: [0, 5, 0, 20]
         },
       }
     };
 
     this.pdfObj = pdfMake.createPdf(dd);
+    this.pdfObj.download();
   }
 
   openFile() {
@@ -776,5 +780,24 @@ export class ReportesPage implements OnInit {
       });
       return true;
     }
+  }
+  getBase64ImageFromURL(url) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.setAttribute('crossOrigin', 'anonymous');
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.width;
+        canvas.height = img.height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0);
+        const dataURL = canvas.toDataURL('image/png');
+        resolve(dataURL);
+      };
+      img.onerror = error => {
+        reject(error);
+      };
+      img.src = url;
+    });
   }
 }
