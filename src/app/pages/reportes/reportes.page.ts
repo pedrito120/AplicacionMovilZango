@@ -23,6 +23,7 @@ export class ReportesPage implements OnInit {
   reportes: any;
   numeroDeReporte: any;
   valorVerificar: any;
+  nombreEmpresa:any;
   constructor(private router: Router, private empresaService: ConeccionService, private route: ActivatedRoute,
     private file: File, private fileOpener: FileOpener, private platform: Platform) {
 
@@ -35,6 +36,7 @@ export class ReportesPage implements OnInit {
     });
     this.empresaService.obtenerDatosEmpres(this.id).subscribe((res) => {
       this.datosEmpresa = res;
+      this.nombreEmpresa=this.datosEmpresa.nombre.toUpperCase();
     })
   }
   verificar(id) {

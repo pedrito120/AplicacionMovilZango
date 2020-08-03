@@ -32,7 +32,7 @@ export class GraficasPage implements OnInit {
     });
     this.empresaService.obtenerDatosEmpresa(this.id).subscribe((res)=>{
       this.dato=res;
-      this.nombre=this.dato.nombre;
+      this.nombre=this.dato.nombre.toUpperCase();
       console.log(this.dato)
     })
   }
