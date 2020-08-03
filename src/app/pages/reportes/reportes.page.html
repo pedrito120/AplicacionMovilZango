@@ -3,7 +3,7 @@
     <ion-buttons slot="start" defaultHref="/">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title size="small">Reportes</ion-title>
+    <ion-title size="small" class="texto">Reportes</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -27,5 +27,7 @@
   </div>
 </ion-content>
 <ion-footer>
-  <ion-button *ngIf="pdfObj" color="verdeZango" expand="full">Ver Reporte {{numeroDeReporte}}</ion-button>
+  <ion-toolbar color="negroZango" class="bordeV tb">
+    <ion-button *ngIf="pdfObj" color="verdeZango" expand="full" (click)="openFile()">Ver Reporte {{numeroDeReporte}}</ion-button>
+  </ion-toolbar>
 </ion-footer>

@@ -87,14 +87,12 @@ export class InteriorPage implements OnInit {
       this.sr = checked;
     }
   }
-  subirCambios(f) {
+  async subirCambios(f) {
     console.log(this.interior);
-    this.empresaService.guardarReportePdf(this.id, f.value.reporte, 'interior', this.interior);
-    this.insertarInterirores(this.interior.length);
-    // console.log(this.interior.length);
+    await this.empresaService.guardarReportePdf(this.id, f.value.reporte, 'interior', this.interior);
+    await this.insertarInterirores(this.interior.length);
   }
   insertarInterirores(cantidad) {
-
     for (let index = 0; index < cantidad; index++) {
       const trampa = {
         trampa: index,
@@ -106,7 +104,8 @@ export class InteriorPage implements OnInit {
           ed: false,
           ee: false,
           er: false,
-          sc: false
+          sc: false,
+          sr: false
         }
       };
       this.empresaService.insertarTrampasInterior(trampa, index, this.id);

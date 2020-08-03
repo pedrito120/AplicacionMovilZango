@@ -10,7 +10,6 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./analizar.page.scss'],
 })
 export class AnalizarPage implements OnInit {
-  
   datos: any = [];
   constructor(private router: Router, private empresaService: ConeccionService, private navCtrl: NavController) {
     this.empresaService.obtenerEmpresas().subscribe((res) => {

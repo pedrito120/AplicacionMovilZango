@@ -14,8 +14,9 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { File } from '@ionic-native/file/ngx';
+import {FileOpener} from '@ionic-native/file-opener/ngx';
 var firebaseConfig = {
   apiKey: "AIzaSyDe3_rPCSzJNik5HWmpGiStnwCy1nJKK2k",
   authDomain: "grupozango.firebaseapp.com",
@@ -39,8 +40,9 @@ var firebaseConfig = {
   ],
   providers: [
     StatusBar,
+    File,
+    FileOpener,
     SplashScreen,
-    ScreenOrientation,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, LottieSplashScreen
   ],
   bootstrap: [AppComponent]
