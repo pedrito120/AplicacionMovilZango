@@ -34,6 +34,7 @@ export class RegistrarPage implements OnInit {
     this.insertarExteriores(this.empresa.noExterior);
     this.insertarLamparas(this.empresa.noLamparas);
     this.route.navigateByUrl('');
+    this.limpiarDatos()
   }
 
 
