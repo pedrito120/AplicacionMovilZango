@@ -163,9 +163,10 @@
   </ion-card>
 
 </ion-content>
-<ion-footer *ngIf="datos === 0">
+
+<ion-footer *ngIf="datos === 0"  color="negroZango" style="background-color: #121212;">
   <form #subir="ngForm">
-    <ion-row style="text-align: center;">
+    <ion-row style="text-align: center;" class="tb">
       <ion-col size="6">
         <ion-input ngModel type="number" name="reporte" placeholder="Numero de reporte"></ion-input>
       </ion-col>

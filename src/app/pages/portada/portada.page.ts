@@ -17,7 +17,7 @@ export class PortadaPage implements OnInit {
     cantidad: [],
     ingrediente: [],
     fecha: Date,
-    caducidadFrasco: Date,
+    caducidadFrasco: '',
     actividadeRealizadas: '',
     recomendacion: '',
     sustanciaActiva: '',

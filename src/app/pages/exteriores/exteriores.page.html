@@ -141,17 +141,21 @@
   </ion-card>
 </ion-content>
 
-<ion-footer *ngIf="datos === 0">
+<ion-footer *ngIf="datos === 0" color="negroZango" style="background-color: #121212;">
   <form #subir="ngForm">
-    <ion-row style="text-align: center;">
-      <ion-col size="6">
-        <ion-input type="number" ngModel name="reporte" placeholder="Numero de reporte"></ion-input>
-      </ion-col>
-      <ion-col size="6">
-        <ion-button expand="full" color="verdeZango" (click)="subirCambios(subir)">
-          Guardar Datos
-        </ion-button>
-      </ion-col>
-    </ion-row>
+      <ion-card color="negroZango" class="tb">
+        <ion-row style="text-align: center;">
+          <ion-col size="6">
+            <ion-input type="number" ngModel name="reporte" placeholder="Numero de reporte"></ion-input>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button expand="full" color="verdeZango" (click)="subirCambios(subir)">
+              Guardar Datos
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+      
+    
   </form>
 </ion-footer>
