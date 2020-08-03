@@ -272,6 +272,7 @@ export class ReportesPage implements OnInit {
         h3.push(27);
       }
     }
+    console.log(body);
     const element = [];
     for (let index = 0; index < datosPortada.check.length; index++) {
       if (datosPortada.check[index] === false) {
@@ -513,7 +514,7 @@ export class ReportesPage implements OnInit {
                   text:
                     [
                       datosPortada.ingrediente[2] + '\n',
-                      element[49] + 'Ambietrol NOVARTIS'
+                      element[49] + 'RBM-Q'
                     ]
                 },
                 {
