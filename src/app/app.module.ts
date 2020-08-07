@@ -8,7 +8,6 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { LottieSplashScreen } from '@ionic-native/lottie-splash-screen/ngx'
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -43,7 +42,7 @@ var firebaseConfig = {
     File,
     FileOpener,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, LottieSplashScreen
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
   bootstrap: [AppComponent]
 })
