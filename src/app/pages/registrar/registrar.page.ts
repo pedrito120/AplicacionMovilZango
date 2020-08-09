@@ -33,7 +33,6 @@ export class RegistrarPage implements OnInit {
     this.insertarInterirores(this.empresa.noInterior);
     this.insertarExteriores(this.empresa.noExterior);
     this.insertarLamparas(this.empresa.noLamparas);
-    this.route.navigateByUrl('');
     this.limpiarDatos()
   }
 
