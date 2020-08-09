@@ -58,6 +58,23 @@ export class PortadaPage implements OnInit {
   // }
   ver() {
     this.empresaService.guardarReportePdf(this.id,this.portada.noReporte, 'portada', this.portada);
+    this.limpiaeDatos()
   }
-
+limpiaeDatos(){
+  this.portada = {
+    noReporte: null,
+    inicio: Date,
+    termino: Date,
+    check: [],
+    cantidad: [],
+    ingrediente: [],
+    fecha: Date,
+    caducidadFrasco: '',
+    actividadeRealizadas: '',
+    recomendacion: '',
+    sustanciaActiva: '',
+    tecnico: '',
+    responsable: ''
+  }
+}
 }
